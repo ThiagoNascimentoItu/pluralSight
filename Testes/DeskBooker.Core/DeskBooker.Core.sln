@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Core.Tests", "DeskBooker.Core.Tests\DeskBooker.Core.Tests.csproj", "{9900A040-E6DA-43DA-BC5C-F24D47C32093}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeskBooker.Core", "DeskBooker.Core\DeskBooker.Core.csproj", "{5273FC05-BFF1-46C9-841F-898A7BF42224}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9900A040-E6DA-43DA-BC5C-F24D47C32093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9900A040-E6DA-43DA-BC5C-F24D47C32093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9900A040-E6DA-43DA-BC5C-F24D47C32093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9900A040-E6DA-43DA-BC5C-F24D47C32093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5273FC05-BFF1-46C9-841F-898A7BF42224}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5273FC05-BFF1-46C9-841F-898A7BF42224}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5273FC05-BFF1-46C9-841F-898A7BF42224}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5273FC05-BFF1-46C9-841F-898A7BF42224}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8477930-52CB-405C-97F4-EB3E04501AB6}
+	EndGlobalSection
+EndGlobal
