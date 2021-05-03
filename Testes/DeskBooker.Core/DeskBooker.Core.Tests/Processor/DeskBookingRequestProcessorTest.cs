@@ -26,7 +26,7 @@ namespace DeskBooker.Core.Processor
                 Date = new DateTime(2000, 1, 28)
             };
 
-            _availableDesks = new List<Desk> { new Desk { Id = 7} };
+            _availableDesks = new List<Desk> { new Desk { Id = 7 } };
 
             _deskRepositoryMock = new Mock<IDeskRepository>();
             _deskBookingRepositoryMock = new Mock<IDeskBookingRepository>();
@@ -57,6 +57,7 @@ namespace DeskBooker.Core.Processor
 
             Assert.Equal("request", exception.ParamName);
         }
+
         [Fact]
         public void ShouldSaveDeskBooking()
         {
@@ -86,6 +87,44 @@ namespace DeskBooker.Core.Processor
             _processor.BookDesk(_request);
 
             _deskBookingRepositoryMock.Verify(x => x.Save(It.IsAny<DeskBooking>()), Times.Never);
+        }
+
+        [Theory]
+        [InlineData(DeskBookingResultCode.Success, true)]
+        [InlineData(DeskBookingResultCode.NoDeskAvailable, false)]
+        public void ShouldReturnExpectedResultCode(DeskBookingResultCode expectedResultCode, bool isDeskAvailable)
+        {
+            if (!isDeskAvailable)
+            {
+                _availableDesks.Clear();
+            }
+
+            var result = _processor.BookDesk(_request);
+
+            Assert.Equal(expectedResultCode, result.Code);
+        }
+
+        [Theory]
+        [InlineData(5, true)]
+        [InlineData(null, false)]
+        public void ShouldReturnExpectedDeskBookingId(int? expectedDeskBookingId, bool isDeskAvailable)
+        {
+            if (!isDeskAvailable)
+            {
+                _availableDesks.Clear();
+            }
+            else
+            {
+                _deskBookingRepositoryMock.Setup(x => x.Save(It.IsAny<DeskBooking>()))
+                    .Callback<DeskBooking>(deskBooking =>
+                    {
+                        deskBooking.Id = expectedDeskBookingId.Value;
+                    });
+            }
+
+            var result = _processor.BookDesk(_request);
+
+            Assert.Equal(expectedDeskBookingId, result.DeskBookingId);
         }
     }
 }
